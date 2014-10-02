@@ -1,3 +1,7 @@
+-- puremagic 1.0.0
+-- Copyright (c) 2014 Will Bond <will@wbond.net>
+-- Licensed under the MIT license.
+
 
 function basename(path)
     local basename_match = path:match('[/\\]([^/\\]+)$')

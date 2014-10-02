@@ -5,6 +5,11 @@ A pure lua module that detects the mime type of file based on their contents. Fa
 Tested on Lua 5.2 and Luajit 2.0. Should work with Lua 5.1 also.
 
 
+## Version
+
+The current version is: `1.0.0`
+
+
 ## Usage
 
 Basic usage:
