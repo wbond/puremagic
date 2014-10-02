@@ -114,3 +114,15 @@ The following mime types are detected:
  - application/x-ruby
  - application/x-shockwave-flash
  - text/x-shellscript
+
+## Running Tests
+
+```bash
+lua tests.lua
+```
+
+or
+
+```bash
+luajit tests.lua
+```
