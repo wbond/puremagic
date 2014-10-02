@@ -57,6 +57,7 @@ The following mime types are detected:
  - video/x-matroska
  - video/x-ms-wmv
  - video/x-msvideo
+ - application/x-shockwave-flash
 
 ### Audio
 
@@ -106,14 +107,18 @@ The following mime types are detected:
  - text/rtf
  - text/tab-separated-values
 
-### Other
+### Scripts
 
  - application/x-httpd-php
  - application/x-perl
  - application/x-python
  - application/x-ruby
- - application/x-shockwave-flash
  - text/x-shellscript
+
+### Binaries
+
+ - application/x-msdownload
+ - application/octet-stream
 
 ## Running Tests
 
