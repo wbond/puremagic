@@ -2,6 +2,8 @@
 
 A pure lua module that detects the mime type of file based on their contents. Falls back to detecting based on extension for plain text files.
 
+Tested on Lua 5.2 and Luajit 2.0. Should work with Lua 5.1 also.
+
 ## Usage
 
 Basic usage:
