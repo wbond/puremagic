@@ -4,6 +4,7 @@ A pure lua module that detects the mime type of file based on their contents. Fa
 
 Tested on Lua 5.2 and Luajit 2.0. Should work with Lua 5.1 also.
 
+
 ## Usage
 
 Basic usage:
@@ -28,97 +29,117 @@ local puremagic = require('puremagic')
 local mimetype = puremagic.via_content(content, 'test.sh')
 ```
 
+
 ## Supported Mime Types
 
 The following mime types are detected:
 
 ### Images
 
- - image/gif
- - image/jp2
- - image/jpeg
- - image/png
- - image/svg+xml
- - image/tiff
- - image/vnd.adobe.photoshop
- - image/webp
- - image/x-ms-bmp
- - application/postscript
- - application/vnd.microsoft.icon
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+AI                            | application/pdf or application/postscript
+BMP                           | image/x-ms-bmp
+EPS                           | application/postscript
+GIF                           | image/gif
+ICO                           | application/vnd.microsoft.icon
+JPEG                          | image/jpeg
+JPEG 2000                     | image/jp2
+PNG                           | image/png
+PSD                           | image/vnd.adobe.photoshop
+SVG                           | image/svg+xml
+TIFF                          | image/tiff
+webp                          | image/webp
 
 ### Video
 
- - video/3gpp
- - video/mp4
- - video/ogg
- - video/quicktime
- - video/webm
- - video/x-flv
- - video/x-matroska
- - video/x-ms-wmv
- - video/x-msvideo
- - application/x-shockwave-flash
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+3GP                           | video/3gpp
+3GP2                          | video/3gpp2
+AVI                           | video/x-msvideo
+FLV                           | video/x-flv
+MKV                           | video/x-matroska
+MOV                           | video/quicktime
+MP4                           | video/mp4
+SWF                           | application/x-shockwave-flash
+Theora                        | video/ogg
+webm                          | video/webm
+WMV                           | video/x-ms-wmv
 
 ### Audio
 
- - audio/mp4
- - audio/mpeg
- - audio/ogg
- - audio/vorbis
- - audio/webm
- - audio/x-aiff
- - audio/x-flac
- - audio/x-matroska
- - audio/x-ms-wma
- - audio/x-wav
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+AIFF                          | audio/x-aiff
+FLAC                          | audio/x-flac
+M4A                           | audio/mp4
+MKA                           | audio/x-matroska
+MP3                           | audio/mpeg
+Ogg Vorbis                    | audio/vorbis
+Opus                          | audio/ogg
+WAV                           | audio/x-wav
+webm                          | audio/webm
+WMA                           | audio/x-ms-wma
 
 ### Archives
 
- - application/x-7z-compressed
- - application/x-bzip2
- - application/x-compress
- - application/x-gzip
- - application/x-rar-compressed
- - application/x-tar
- - application/x-xz 
- - application/zip
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+7zip                          | application/x-7z-compressed
+Bzip2                         | application/x-bzip2
+Compress                      | application/x-compress
+Gzip                          | application/x-gzip
+Rar                           | application/x-rar-compressed
+Tar                           | application/x-tar
+xz                            | application/x-xz 
+zip                           | application/zip
 
 ### Office Documents
 
- - application/msword
- - application/pdf
- - application/vnd.apple.keynote
- - application/vnd.apple.numbers
- - application/vnd.apple.pages
- - application/vnd.ms-excel
- - application/vnd.ms-powerpoint
- - application/vnd.oasis.opendocument.presentation
- - application/vnd.oasis.opendocument.spreadsheet
- - application/vnd.oasis.opendocument.text
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+Excel (`.xls`, `.xlsx`)       | application/vnd.ms-excel
+Keynote                       | application/vnd.apple.keynote
+Numbers                       | application/vnd.apple.numbers
+OpenOffice `.odp`             | application/vnd.oasis.opendocument.presentation
+OpenOffice `.ods`             | application/vnd.oasis.opendocument.spreadsheet
+OpenOffice `.odt`             | application/vnd.oasis.opendocument.text
+Pages                         | application/vnd.apple.pages
+PDF                           | application/pdf
+Powerpoint (`.ppt`, `.pptx`)  | application/vnd.ms-powerpoint
+Word (`.doc`, `.docx`)        | application/msword
 
 ### Text
 
- - application/xhtml+xml
- - application/xml
- - application/rss+xml
- - text/csv
- - text/html
- - text/plain
- - text/rtf
- - text/tab-separated-values
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+XML                           | application/xml
+CSV                           | text/csv
+HTML                          | text/html
+RSS                           | application/rss+xml
+RTF                           | text/rtf
+`.tab`                        | text/tab-separated-values
+XHTML                         | application/xhtml+xml
+Unrecognized Text             | text/plain
 
 ### Scripts
 
- - application/x-httpd-php
- - application/x-perl
- - application/x-python
- - application/x-ruby
- - text/x-shellscript
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+Bash/Bourne                   | text/x-shellscript
+Perl                          | application/x-perl
+PHP                           | application/x-httpd-php
+Python                        | application/x-python
+Ruby                          | application/x-ruby
 
 ### Binaries
 
- - application/x-msdownload
- - application/octet-stream
+File type                     | Mime type
+------------------------------|-------------------------------------------------
+DLL                           | application/x-msdownload
+Unrecognized Binary           | application/octet-stream
+
 
 ## Running Tests
 
