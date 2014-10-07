@@ -1,4 +1,4 @@
--- puremagic 1.0.0
+-- puremagic 1.0.1
 -- Copyright (c) 2014 Will Bond <will@wbond.net>
 -- Licensed under the MIT license.
 
@@ -720,7 +720,7 @@ function _M.via_content(content, filename)
     end
 
     -- Binary-looking files should have been detected so far
-    if content:find('[\x00-\x08\x0B\x0C\x0E-\x1F]') then
+    if content:find('[%z\x01-\x08\x0B\x0C\x0E-\x1F]') then
         return 'application/octet-stream'
     end
 

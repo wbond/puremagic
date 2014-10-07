@@ -7,7 +7,7 @@ Tested on Lua 5.2 and Luajit 2.0. Should work with Lua 5.1 also.
 
 ## Version
 
-The current version is: `1.0.0`
+The current version is: `1.0.1`
 
 
 ## Usage
