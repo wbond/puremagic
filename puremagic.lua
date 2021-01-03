@@ -716,20 +716,20 @@ function _M.via_content(content, filename)
 
     mimetype = binary_tests(content, ext)
     if mimetype then
-        return mimetype
+        return mimetype, true
     end
 
     -- Binary-looking files should have been detected so far
     if content:find('[%z\x01-\x08\x0B\x0C\x0E-\x1F]') then
-        return 'application/octet-stream'
+        return 'application/octet-stream', true
     end
 
     mimetype = text_tests(content)
     if mimetype then
-        return mimetype
+        return mimetype, false
     end
 
-    return ext_tests(ext)
+    return ext_tests(ext), false
 end
 
 return _M
