@@ -3,7 +3,7 @@
 -- Licensed under the MIT license.
 
 
-function basename(path)
+local function basename(path)
     local basename_match = path:match('[/\\]([^/\\]+)$')
     if basename_match then
         return basename_match, nil
@@ -13,7 +13,7 @@ function basename(path)
 end
 
 
-function extension(path)
+local function extension(path)
     path = path:lower()
     local tar_match = path:match('%.(tar%.[^.]+)$')
     if tar_match then
@@ -32,7 +32,7 @@ function extension(path)
 end
 
 
-function in_table(value, list)
+local function in_table(value, list)
     for i=1, #list do
         if list[i] == value then
             return true
@@ -42,7 +42,7 @@ function in_table(value, list)
 end
 
 
-function string_to_bit_table(chars)
+local function string_to_bit_table(chars)
     local output = {}
     for char in chars:gmatch('.') do
         local num = string.byte(char)
@@ -59,7 +59,7 @@ function string_to_bit_table(chars)
 end
 
 
-function bit_table_to_string(bits)
+local function bit_table_to_string(bits)
     local output = {}
     for i = 1, #bits do
         local num = tonumber(table.concat(bits[i]), 2)
@@ -69,7 +69,7 @@ function bit_table_to_string(bits)
 end
 
 
-function bitwise_and(a, b)
+local function bitwise_and(a, b)
     local a_bytes = string_to_bit_table(a)
     local b_bytes = string_to_bit_table(b)
 
@@ -91,7 +91,7 @@ end
 
 
 -- Unpack a little endian byte string into an integer
-function unpack_le(chars)
+local function unpack_le(chars)
     local bit_table = string_to_bit_table(chars)
     -- Merge the bits into a string of 1s and 0s
     local result = {}
@@ -103,7 +103,7 @@ end
 
 
 -- Unpack a big endian byte string into an integer
-function unpack_be(chars)
+local function unpack_be(chars)
     local bit_table = string_to_bit_table(chars)
     -- Merge the bits into a string of 1s and 0s
     for i=1, #bit_table do
@@ -115,7 +115,7 @@ end
 
 -- Takes the first 4-8k of an EBML file and identifies if it is matroska or webm
 -- and it it contains just video or just audio.
-function ebml_parse(content)
+local function ebml_parse(content)
     local position = 1
     local length = #content
 
@@ -198,7 +198,7 @@ end
 -- Parses a section of an EBML document, returning the EBML ID at the beginning,
 -- plus the value as a table with child EBML IDs as keys and the number of
 -- bytes from the content that contained the ID and value
-function ebml_parse_section(content)
+local function ebml_parse_section(content)
     local ebml_id, element_length, used_bytes = ebml_id_and_length(content)
 
     -- Don't parse the segment since it is the whole file!
@@ -262,7 +262,7 @@ end
 
 -- Should accept 12+ bytes, will return the ebml id, the data length and the
 -- number of bytes that were used to hold those values.
-function ebml_id_and_length(chars)
+local function ebml_id_and_length(chars)
     -- The ID is encoded the same way as the length, however, we don't want
     -- to remove the length bits from the ID value or intepret it as an
     -- unsigned int since all of the documentation online references the IDs in
@@ -279,7 +279,7 @@ end
 
 -- Should accept 8+ bytes, will return the data length plus the number of bytes
 -- that were used to hold the data length.
-function ebml_length(chars)
+local function ebml_length(chars)
     -- We substring chars to ensure we don't build a huge table we don't need
     local bit_tables = string_to_bit_table(chars:sub(1, 8))
 
@@ -303,7 +303,7 @@ function ebml_length(chars)
 end
 
 
-function binary_tests(content, ext)
+local function binary_tests(content, ext)
     local length = #content
     local _1_8   = content:sub(1, 8)
     local _1_7   = content:sub(1, 7)
@@ -600,7 +600,7 @@ function binary_tests(content, ext)
 end
 
 
-function text_tests(content)
+local function text_tests(content)
     local lower_content = content:lower()
 
     if content:find('^%%!PS-Adobe') then
@@ -677,7 +677,7 @@ local ext_map = {
     xml   = 'application/xml'
 }
 
-function ext_tests(ext)
+local function ext_tests(ext)
     local mimetype = ext_map[ext]
     if mimetype then
         return mimetype
